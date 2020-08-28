@@ -43,22 +43,41 @@
     </a>
 
     <p class="p-4 italic font-bold text-red-500 bg-indigo-200">
+      Note: after bump verstion i18n to alpha 5 <br />
       Description: The placeholder for param like {length} is not replacing by
       real value
+      <br />
+      The confirmed rule with target not working
     </p>
     <div class="w-full p-4 bg-green-200">
-      Field
+      Field <br />
+      Text1:
       <v-field
-        name="text"
+        name="text1"
         v-slot="{ field, errorMessage }"
-        rules="required|min:3"
+        rules="required|between:3,10"
       >
         <input
-          placeholder="required|min:3"
+          placeholder="required|between:3,10"
           v-bind="field"
           type="text"
           class="p-2"
         />
+        <div class="py-2 font-bold text-red-500">Error: {{ errorMessage }}</div>
+      </v-field>
+      Text2:
+      <v-field
+        name="text2"
+        v-slot="{ field, errorMessage }"
+        rules="required|confirmed:text1"
+      >
+        <input
+          placeholder="required|confirmed:text1"
+          v-bind="field"
+          type="text"
+          class="p-2"
+        /><br />
+        The confirmed rule with target not working
         <div class="py-2 font-bold text-red-500">Error: {{ errorMessage }}</div>
       </v-field>
     </div>
@@ -69,7 +88,7 @@
         v-model="validateValue"
         type="text"
         class="p-2"
-        placeholder="required|min:3"
+        placeholder="required|between:3,10"
         @input="validationTracking"
       />
       <div class="py-2 font-bold text-red-500">Error: {{ errorMessage }}</div>
@@ -93,7 +112,7 @@ export default defineComponent({
       value: validateValue,
       errorMessage,
       handleChange: validationTracking,
-    } = useField("test", "required|min:3", {
+    } = useField("test", "required|between:3,10", {
       initialValue: inputTest,
     });
 
