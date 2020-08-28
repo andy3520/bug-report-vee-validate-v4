@@ -43,8 +43,8 @@
     </a>
 
     <p class="p-4 italic font-bold text-red-500 bg-indigo-200">
-      Description: The placeholder for name {_field_} or param like {length} is
-      not replacing by real value
+      Description: The placeholder for param like {length} is not replacing by
+      real value
     </p>
     <div class="w-full p-4 bg-green-200">
       Field
