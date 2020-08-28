@@ -51,35 +51,41 @@
     </p>
     <div class="w-full p-4 bg-green-200">
       Field <br />
-      Text1:
-      <v-field
-        name="text1"
-        v-slot="{ field, errorMessage }"
-        rules="required|between:3,10"
-      >
-        <input
-          placeholder="required|between:3,10"
-          v-bind="field"
-          type="text"
-          class="p-2"
-        />
-        <div class="py-2 font-bold text-red-500">Error: {{ errorMessage }}</div>
-      </v-field>
-      Text2:
-      <v-field
-        name="text2"
-        v-slot="{ field, errorMessage }"
-        rules="required|confirmed:text1"
-      >
-        <input
-          placeholder="required|confirmed:text1"
-          v-bind="field"
-          type="text"
-          class="p-2"
-        /><br />
-        The confirmed rule with target not working
-        <div class="py-2 font-bold text-red-500">Error: {{ errorMessage }}</div>
-      </v-field>
+      <v-form>
+        Text1:
+        <v-field
+          name="text1"
+          v-slot="{ field, errorMessage }"
+          rules="required|between:3,10"
+        >
+          <input
+            placeholder="required|between:3,10"
+            v-bind="field"
+            type="text"
+            class="p-2"
+          />
+          <div class="py-2 font-bold text-red-500">
+            Error: {{ errorMessage }}
+          </div>
+        </v-field>
+        Text2:
+        <v-field
+          name="text2"
+          v-slot="{ field, errorMessage }"
+          rules="required|confirmed:text1"
+        >
+          <input
+            placeholder="required|confirmed:text1"
+            v-bind="field"
+            type="text"
+            class="p-2"
+          /><br />
+          The confirmed rule with target not working
+          <div class="py-2 font-bold text-red-500">
+            Error: {{ errorMessage }}
+          </div>
+        </v-field>
+      </v-form>
     </div>
 
     <div class="w-full p-4 bg-blue-200">
@@ -98,11 +104,12 @@
 
 <script lang="ts">
 import { defineComponent, ref } from "vue";
-import { Field, useField } from "vee-validate";
+import { Field, useField, Form } from "vee-validate";
 
 export default defineComponent({
   components: {
     "v-field": Field,
+    "v-form": Form,
   },
   name: "Home",
   setup() {
