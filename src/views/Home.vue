@@ -67,6 +67,7 @@
       useField
       <input
         v-model="validateValue"
+        type="text"
         class="p-2"
         placeholder="required|min:3"
         @input="validationTracking"
